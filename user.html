@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>个人中心</h3>
+  <ul id="info">
+
+  </ul>
+  <script>
+    let userinfo = location.search.substr(1).split('=')[1]
+    console.log('location.search: ', location.search.substr(1).split('=')[1]);
+
+    var res = JSON.parse(decodeURIComponent(userinfo))
+    console.log('res: ', res);
+
+    if (res) {
+      document.getElementById('info').innerHTML = `
+      <li>
+      昵称: <span>${res.niackname}</span>
+    </li>
+    <li>
+      头像: <span><img width="60px" src="${res.headimgurl}"/></span>
+    </li>
+    <li>
+      性别: <span>${res.sex === 1 ? '男' : '女'}</span>
+    </li>
+    <li>
+      国家: <span>${res.country}</span>
+    </li>
+    <li>
+      省份: <span>${res.province}</span>
+    </li>
+    <li>
+      城市: <span>${res.city}</span>
+    </li>
+      `
+    }
+
+    // console.log(JSON.parse(userinfo));
+
+
+  </script>
+</body>
+
+</html>
