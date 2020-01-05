@@ -6,18 +6,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1, user-scalable=no">
-  <title>Document</title>
+  <title>授权登陆</title>
 </head>
 
 <body>
-  <h3>授权登陆</h3>
-  <button onclick="auth()">微信授权</button>
+  <div style="text-align: center;margin: 300px 50px;">
+    <button onclick="auth()">微信授权</button>
+  </div>
   <script src="./node_modules/axios/dist/axios.min.js"></script>
   <script>
     // 授权
     function auth() {
       // 1. get跳转路径请求
-      location.href = 'http://server.utools.club/auth'
+      location.href = 'http://server.utools.club/auth?cb=http://server.utools.club/user'
 
       // 2. 异步ajax请求
       // axios.get('http://localhost:3000/auth').then(res => {

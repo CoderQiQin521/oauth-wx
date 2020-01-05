@@ -17,8 +17,12 @@ app.get('/user', (req, res) => {
 /* ---------------------------------- 后端逻辑 ---------------------------------- */
 
 app.get('/auth', (req, res) => {
+  let { cb } = req.query
+  if (!cb) {
+    res.json('请填写回调地址')
+  }
   // 后端重定向(总是跨域) 或者  url 返回前端跳转
-  let urls = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.appid + '&redirect_uri=http://server.utools.club/token&response_type=code&scope=snsapi_userinfo&state=http://server.utools.club/user#wechat_redirect'
+  let urls = 'https://open.weixin.qq.com/connect/oauth2/authorize?appid=' + config.appid + '&redirect_uri=http://server.utools.club/token&response_type=code&scope=snsapi_userinfo&state=' + cb + '#wechat_redirect'
   // res.send(urls);
   res.redirect(301, urls)
 })
